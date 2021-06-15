@@ -9,10 +9,16 @@ class Flashcard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      
       child: Container(
         child: Center(
           child: Column(
-            children: [Text(wordData.word), Text(wordData.jpn)],
+            children: [
+              Text(
+                wordData.word,
+                style: TextStyle(fontSize: 24.0),
+              )
+            ],
           ),
         ),
       ),
