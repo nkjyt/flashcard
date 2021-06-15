@@ -1,6 +1,5 @@
 import 'package:flashcard/data/word_data.dart';
 import 'package:flutter/services.dart';
-import 'package:csv/csv.dart';
 
 class FlashcardRepository {
   Future<List<WordData>> getFlashcards() async {
