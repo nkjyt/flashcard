@@ -8,6 +8,9 @@ part of 'word_data.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+WordData _$WordDataFromJson(Map<String, dynamic> json) {
+  return _WordData.fromJson(json);
+}
 
 /// @nodoc
 class _$WordDataTearOff {
@@ -24,6 +27,11 @@ class _$WordDataTearOff {
       isRemembered: isRemembered,
     );
   }
+
+// ignore: unused_element
+  WordData fromJson(Map<String, Object> json) {
+    return WordData.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -38,6 +46,7 @@ mixin _$WordData {
   int get count;
   bool get isRemembered;
 
+  Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
   $WordDataCopyWith<WordData> get copyWith;
 }
@@ -112,10 +121,15 @@ class __$WordDataCopyWithImpl<$Res> extends _$WordDataCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_WordData implements _WordData {
   const _$_WordData(
       {this.id, this.word, this.jpn, this.count, this.isRemembered});
+
+  factory _$_WordData.fromJson(Map<String, dynamic> json) =>
+      _$_$_WordDataFromJson(json);
 
   @override
   final String id;
@@ -163,6 +177,11 @@ class _$_WordData implements _WordData {
   @override
   _$WordDataCopyWith<_WordData> get copyWith =>
       __$WordDataCopyWithImpl<_WordData>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_WordDataToJson(this);
+  }
 }
 
 abstract class _WordData implements WordData {
@@ -172,6 +191,8 @@ abstract class _WordData implements WordData {
       String jpn,
       int count,
       bool isRemembered}) = _$_WordData;
+
+  factory _WordData.fromJson(Map<String, dynamic> json) = _$_WordData.fromJson;
 
   @override
   String get id;

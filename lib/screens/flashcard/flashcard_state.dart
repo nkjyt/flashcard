@@ -11,6 +11,6 @@ part 'flashcard_state.g.dart';
 abstract class FlashcardState with _$FlashcardState {
   const factory FlashcardState({@Default([]) List<WordData> flashcards}) =
       _FlashcardState;
-
-
+  factory FlashcardState.fromJson(Map<String, dynamic> json) =>
+      _$FlashcardStateFromJson(json);
 }

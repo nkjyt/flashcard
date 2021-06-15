@@ -12,4 +12,7 @@ abstract class WordData with _$WordData {
     int count,
     bool isRemembered,
   }) = _WordData;
+
+  factory WordData.fromJson(Map<String, dynamic> json) =>
+      _$WordDataFromJson(json);
 }

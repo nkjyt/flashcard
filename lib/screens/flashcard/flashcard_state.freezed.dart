@@ -8,6 +8,9 @@ part of 'flashcard_state.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+FlashcardState _$FlashcardStateFromJson(Map<String, dynamic> json) {
+  return _FlashcardState.fromJson(json);
+}
 
 /// @nodoc
 class _$FlashcardStateTearOff {
@@ -19,6 +22,11 @@ class _$FlashcardStateTearOff {
       flashcards: flashcards,
     );
   }
+
+// ignore: unused_element
+  FlashcardState fromJson(Map<String, Object> json) {
+    return FlashcardState.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -29,6 +37,7 @@ const $FlashcardState = _$FlashcardStateTearOff();
 mixin _$FlashcardState {
   List<WordData> get flashcards;
 
+  Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
   $FlashcardStateCopyWith<FlashcardState> get copyWith;
 }
@@ -95,12 +104,17 @@ class __$FlashcardStateCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_FlashcardState
     with DiagnosticableTreeMixin
     implements _FlashcardState {
   const _$_FlashcardState({this.flashcards = const []})
       : assert(flashcards != null);
+
+  factory _$_FlashcardState.fromJson(Map<String, dynamic> json) =>
+      _$_$_FlashcardStateFromJson(json);
 
   @JsonKey(defaultValue: const [])
   @override
@@ -136,11 +150,19 @@ class _$_FlashcardState
   @override
   _$FlashcardStateCopyWith<_FlashcardState> get copyWith =>
       __$FlashcardStateCopyWithImpl<_FlashcardState>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_FlashcardStateToJson(this);
+  }
 }
 
 abstract class _FlashcardState implements FlashcardState {
   const factory _FlashcardState({List<WordData> flashcards}) =
       _$_FlashcardState;
+
+  factory _FlashcardState.fromJson(Map<String, dynamic> json) =
+      _$_FlashcardState.fromJson;
 
   @override
   List<WordData> get flashcards;
