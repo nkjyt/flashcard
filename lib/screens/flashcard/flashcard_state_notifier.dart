@@ -12,6 +12,7 @@ class FlashcardStateNotifier extends StateNotifier<FlashcardState> {
   final FlashcardRepository repository;
 
   Future<void> _getFlashcards() async {
+    await repository.initializeDatabase();
     var flashcards = await repository.getFlashcards();
     state = state.copyWith(flashcards: flashcards);
   }

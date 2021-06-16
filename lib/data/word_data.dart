@@ -6,11 +6,11 @@ part 'word_data.g.dart';
 @freezed
 abstract class WordData with _$WordData {
   const factory WordData({
-    String id,
+    int id,
     String word,
     String jpn,
     int count,
-    bool isRemembered,
+    int isRemembered,
   }) = _WordData;
 
   factory WordData.fromJson(Map<String, dynamic> json) =>
