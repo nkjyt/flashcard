@@ -11,10 +11,12 @@ class Flashcard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         FlipCard(
           key: flipKey,
-          front: Center(
+          front: Container(
+            margin: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
             child: GestureDetector(
               child: Text(
                 wordData.word,
@@ -23,7 +25,8 @@ class Flashcard extends StatelessWidget {
               onTap: () => flipKey.currentState.toggleCard(),
             ),
           ),
-          back: Center(
+          back: Container(
+            margin: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
             child: GestureDetector(
               child: Text(
                 wordData.jpn,
@@ -41,11 +44,18 @@ class Flashcard extends StatelessWidget {
   }
 
   Widget _buttonWidget(String text, Color color, Function onTap, Icon icon) {
-    return ElevatedButton.icon(
-        onPressed: () => onTap,
-        icon: icon,
-        label: Text(text),
-        style:
-            ElevatedButton.styleFrom(primary: color, onPrimary: Colors.black));
+    return Container(
+      margin: EdgeInsets.all(16.0),
+      child: SizedBox(
+        width: 300,
+        height: 50,
+        child: ElevatedButton.icon(
+            onPressed: () => onTap,
+            icon: icon,
+            label: Text(text),
+            style: ElevatedButton.styleFrom(
+                primary: color, onPrimary: Colors.black)),
+      ),
+    );
   }
 }

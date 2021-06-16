@@ -3,7 +3,7 @@ import 'package:state_notifier/state_notifier.dart';
 
 import 'flashcard_state.dart';
 
-class FlashcardStateNotifier extends StateNotifier<FlashcardState> {
+class FlashcardStateNotifier extends StateNotifier<FlashcardState> with LocatorMixin{
   FlashcardStateNotifier(this.repository) : super(FlashcardState()) {
     //repositoryから受け取ったデータをstateつかって保存する
     _getFlashcards();
