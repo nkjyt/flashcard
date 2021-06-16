@@ -24,10 +24,13 @@ class _List extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, child) {
       final state = watch(flashcardProvider.state);
-      return ListView.builder(
+      return Container(
+        child: Flashcard(state.flashcards[0]),
+      );
+      /* ListView.builder(
         itemCount: state.flashcards.length,
           itemBuilder: (context, int index) =>
-              Flashcard(state.flashcards[index]));
+              Flashcard(state.flashcards[index])); */
     });
   }
 }

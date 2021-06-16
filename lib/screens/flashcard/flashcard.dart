@@ -10,27 +10,42 @@ class Flashcard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlipCard(
-      key: flipKey,
-      front: Center(
-        child: GestureDetector(
-          child: Text(
-            wordData.word,
-            style: TextStyle(fontSize: 24.0),
+    return Column(
+      children: [
+        FlipCard(
+          key: flipKey,
+          front: Center(
+            child: GestureDetector(
+              child: Text(
+                wordData.word,
+                style: TextStyle(fontSize: 40.0),
+              ),
+              onTap: () => flipKey.currentState.toggleCard(),
+            ),
           ),
-          onTap: () => flipKey.currentState.toggleCard(),
-        ),
-      ),
-      back: Center(
-        child: GestureDetector(
-          child: Text(
-            wordData.jpn,
-            style: TextStyle(fontSize: 24.0),
+          back: Center(
+            child: GestureDetector(
+              child: Text(
+                wordData.jpn,
+                style: TextStyle(fontSize: 40.0),
+              ),
+              onTap: () => flipKey.currentState.toggleCard(),
+            ),
           ),
-          onTap: () => flipKey.currentState.toggleCard(),
         ),
-        
-      ),
+        _buttonWidget(
+            'remembred', Colors.green, () {}, Icon(Icons.check_circle_outline)),
+        _buttonWidget('retry', Colors.red, () {}, Icon(Icons.replay_outlined))
+      ],
     );
+  }
+
+  Widget _buttonWidget(String text, Color color, Function onTap, Icon icon) {
+    return ElevatedButton.icon(
+        onPressed: () => onTap,
+        icon: icon,
+        label: Text(text),
+        style:
+            ElevatedButton.styleFrom(primary: color, onPrimary: Colors.black));
   }
 }

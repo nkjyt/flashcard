@@ -16,4 +16,12 @@ class FlashcardStateNotifier extends StateNotifier<FlashcardState> {
     var flashcards = await repository.getFlashcards();
     state = state.copyWith(flashcards: flashcards);
   }
+
+  Future<void> onTapRemembered() async {
+
+  }
+
+  Future<void> onTapRetry() async {
+    
+  }
 }
