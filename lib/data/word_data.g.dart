@@ -8,11 +8,11 @@ part of 'word_data.dart';
 
 _$_WordData _$_$_WordDataFromJson(Map<String, dynamic> json) {
   return _$_WordData(
-    id: json['id'] as String,
+    id: json['id'] as int,
     word: json['word'] as String,
     jpn: json['jpn'] as String,
     count: json['count'] as int,
-    isRemembered: json['isRemembered'] as bool,
+    isRemembered: json['isRemembered'] as int,
   );
 }
 
