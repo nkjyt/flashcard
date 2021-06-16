@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class FlashcardRepository {
   final dbHelper = DatabaseHelper.instance;
 
+  //load flashcard data from DB
   Future<List<WordData>> getFlashcards() async {
     List<WordData> data = [];
 
@@ -17,25 +18,6 @@ class FlashcardRepository {
       data.add(WordData.fromJson(val));
     }
     await print(data);
-
-    /*  //カンマ区切りのデータを配列に
-    var isdelete = false;
-    for (String line in csv.split("\r\n")) {
-      if (!isdelete) {
-        //カラム名のrowを飛ばす
-        isdelete = true;
-        continue;
-      }
-      if (line == "") break;
-      List rows = line.split(',');
-
-      data.add(WordData(
-          id: rows[0],
-          word: rows[1],
-          jpn: rows[2],
-          count: int.parse(rows[3]),
-          isRemembered: 0));
-    } */
     return data;
   }
 
