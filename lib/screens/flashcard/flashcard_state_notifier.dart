@@ -3,7 +3,7 @@ import 'package:state_notifier/state_notifier.dart';
 
 import 'flashcard_state.dart';
 
-class FlashcardStateNotifier extends StateNotifier<FlashcardState> {
+class FlashcardStateNotifier extends StateNotifier<FlashcardState> with LocatorMixin{
   FlashcardStateNotifier(this.repository) : super(FlashcardState()) {
     //repositoryから受け取ったデータをstateつかって保存する
     _getFlashcards();
@@ -15,5 +15,13 @@ class FlashcardStateNotifier extends StateNotifier<FlashcardState> {
     await repository.initializeDatabase();
     var flashcards = await repository.getFlashcards();
     state = state.copyWith(flashcards: flashcards);
+  }
+
+  Future<void> onTapRemembered() async {
+
+  }
+
+  Future<void> onTapRetry() async {
+    
   }
 }

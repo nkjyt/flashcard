@@ -17,7 +17,7 @@ class FlashcardRepository {
     for (var val in flahscardData) {
       data.add(WordData.fromJson(val));
     }
-    await print(data);
+    //await print(data);
     return data;
   }
 
