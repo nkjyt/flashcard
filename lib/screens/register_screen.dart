@@ -1,3 +1,4 @@
+import 'package:flashcard/screens/flashcard/flashcard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flashcard/utils/authentication_error.dart';
@@ -100,9 +101,8 @@ class _RegistrationState extends State<Registration> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  null //Home(user_id: user.uid),
-                              ));
+                            builder: (context) => FlashcardScreen(user_id: user.uid,),
+                          ));
                     } catch (e) {
                       // 登録に失敗した場合
                       setState(() {

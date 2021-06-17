@@ -1,4 +1,4 @@
 class RoutesName {
-  static const String FIRST_PAGE = '/first_page';
-  static const String SECOND_PAGE = '/second_page';
+  static const String LOGIN_PAGE = '/first_page';
+  static const String REGISTER_PAGE = '/second_page';
 }

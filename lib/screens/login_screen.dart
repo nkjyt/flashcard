@@ -1,9 +1,11 @@
+import 'package:flashcard/screens/flashcard/flashcard_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flashcard/utils/authentication_error.dart';
+import 'register_screen.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -97,7 +99,7 @@ class LoginScreen extends State<Login> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  null //Home(user_id: user.uid),
+                                  FlashcardScreen(user_id: user.uid),
                               ));
                     } catch (e) {
                       // ログインに失敗した場合
@@ -136,7 +138,7 @@ class LoginScreen extends State<Login> {
                     MaterialPageRoute(
                         fullscreenDialog: true,
                         builder: (BuildContext context) =>
-                            null //Registration(),
+                            Registration(),
                         ),
                   );
                 }),

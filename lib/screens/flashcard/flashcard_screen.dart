@@ -14,8 +14,12 @@ class StudyState extends StateNotifier<bool> {
 }
 
 class FlashcardScreen extends HookWidget {
+  String user_id = "";
+  FlashcardScreen({Key key, this.user_id}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    print(user_id);
     final isStudying = useProvider(studyStateProvider.state);
 
     return Scaffold(
@@ -41,9 +45,7 @@ class _List extends HookWidget {
   Widget build(BuildContext context) {
     final state = useProvider(flashcardProvider.state);
     return Container(
-        
-        alignment: Alignment.bottomCenter,
-        child: Flashcard(state.flashcards[0])
+        alignment: Alignment.bottomCenter, child: Flashcard(state.flashcards[0])
         /* ListView.builder(
         itemCount: state.flashcards.length,
           itemBuilder: (context, int index) =>
