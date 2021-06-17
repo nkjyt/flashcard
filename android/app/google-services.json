@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "322723025364",
+    "project_id": "imp-flashcard",
+    "storage_bucket": "imp-flashcard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322723025364:android:695d48779a22eef1d20641",
+        "android_client_info": {
+          "package_name": "com.imp.flashcard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322723025364-19619rs0cq6an4m7ma0tjduhgek4hl5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3YGpLgSAMXySE-RyFafz4_n4wCt3xeW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322723025364-19619rs0cq6an4m7ma0tjduhgek4hl5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
