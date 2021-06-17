@@ -18,7 +18,7 @@ class _$WordDataTearOff {
 
 // ignore: unused_element
   _WordData call(
-      {int id, String word, String jpn, int count, int isRemembered}) {
+      {int id, String word, String jpn, int count, bool isRemembered}) {
     return _WordData(
       id: id,
       word: word,
@@ -44,7 +44,7 @@ mixin _$WordData {
   String get word;
   String get jpn;
   int get count;
-  int get isRemembered;
+  bool get isRemembered;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -55,7 +55,7 @@ mixin _$WordData {
 abstract class $WordDataCopyWith<$Res> {
   factory $WordDataCopyWith(WordData value, $Res Function(WordData) then) =
       _$WordDataCopyWithImpl<$Res>;
-  $Res call({int id, String word, String jpn, int count, int isRemembered});
+  $Res call({int id, String word, String jpn, int count, bool isRemembered});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$WordDataCopyWithImpl<$Res> implements $WordDataCopyWith<$Res> {
       jpn: jpn == freezed ? _value.jpn : jpn as String,
       count: count == freezed ? _value.count : count as int,
       isRemembered:
-          isRemembered == freezed ? _value.isRemembered : isRemembered as int,
+          isRemembered == freezed ? _value.isRemembered : isRemembered as bool,
     ));
   }
 }
@@ -90,7 +90,7 @@ abstract class _$WordDataCopyWith<$Res> implements $WordDataCopyWith<$Res> {
   factory _$WordDataCopyWith(_WordData value, $Res Function(_WordData) then) =
       __$WordDataCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String word, String jpn, int count, int isRemembered});
+  $Res call({int id, String word, String jpn, int count, bool isRemembered});
 }
 
 /// @nodoc
@@ -116,7 +116,7 @@ class __$WordDataCopyWithImpl<$Res> extends _$WordDataCopyWithImpl<$Res>
       jpn: jpn == freezed ? _value.jpn : jpn as String,
       count: count == freezed ? _value.count : count as int,
       isRemembered:
-          isRemembered == freezed ? _value.isRemembered : isRemembered as int,
+          isRemembered == freezed ? _value.isRemembered : isRemembered as bool,
     ));
   }
 }
@@ -140,7 +140,7 @@ class _$_WordData implements _WordData {
   @override
   final int count;
   @override
-  final int isRemembered;
+  final bool isRemembered;
 
   @override
   String toString() {
@@ -190,7 +190,7 @@ abstract class _WordData implements WordData {
       String word,
       String jpn,
       int count,
-      int isRemembered}) = _$_WordData;
+      bool isRemembered}) = _$_WordData;
 
   factory _WordData.fromJson(Map<String, dynamic> json) = _$_WordData.fromJson;
 
@@ -203,7 +203,7 @@ abstract class _WordData implements WordData {
   @override
   int get count;
   @override
-  int get isRemembered;
+  bool get isRemembered;
   @override
   @JsonKey(ignore: true)
   _$WordDataCopyWith<_WordData> get copyWith;

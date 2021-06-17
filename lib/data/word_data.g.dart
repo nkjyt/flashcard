@@ -12,7 +12,7 @@ _$_WordData _$_$_WordDataFromJson(Map<String, dynamic> json) {
     word: json['word'] as String,
     jpn: json['jpn'] as String,
     count: json['count'] as int,
-    isRemembered: json['isRemembered'] as int,
+    isRemembered: json['isRemembered'] as bool,
   );
 }
 
