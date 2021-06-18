@@ -13,49 +13,61 @@ class Flashcard extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        FlipCard(
-          key: flipKey,
-          front: Container(
-            margin: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
-            child: GestureDetector(
-              child: Text(
-                wordData.word,
-                style: TextStyle(fontSize: 40.0),
-              ),
-              onTap: () => flipKey.currentState.toggleCard(),
-            ),
-          ),
-          back: Container(
-            margin: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
-            child: GestureDetector(
-              child: Text(
-                wordData.jpn,
-                style: TextStyle(fontSize: 40.0),
-              ),
-              onTap: () => flipKey.currentState.toggleCard(),
+        Expanded(
+          flex: 2,
+          child: Center(
+            child: FlipCard(
+              key: flipKey,
+              front: _wordCard(wordData.word),
+              back: _wordCard(wordData.jpn),
             ),
           ),
         ),
-        _buttonWidget(
-            'remembred', Colors.green, () {}, Icon(Icons.check_circle_outline)),
-        _buttonWidget('retry', Colors.red, () {}, Icon(Icons.replay_outlined))
+        Expanded(
+          flex: 1,
+          child: _buttonWidget('remembred', Colors.green, () {},
+              Icon(Icons.check_circle_outline)),
+        ),
+        Expanded(
+            flex: 1,
+            child: _buttonWidget(
+                'retry', Colors.red, () {}, Icon(Icons.replay_outlined)))
       ],
+    );
+  }
+
+  Widget _wordCard(String text) {
+    return Container(
+      width: 600,
+      height: 300,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.circular(20)),
+      margin: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
+      child: GestureDetector(
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 70.0),
+        ),
+        onTap: () => flipKey.currentState.toggleCard(),
+      ),
     );
   }
 
   Widget _buttonWidget(String text, Color color, Function onTap, Icon icon) {
     return Container(
-      margin: EdgeInsets.all(16.0),
-      child: SizedBox(
-        width: 300,
-        height: 50,
-        child: ElevatedButton.icon(
-            onPressed: () => onTap,
-            icon: icon,
-            label: Text(text),
-            style: ElevatedButton.styleFrom(
-                primary: color, onPrimary: Colors.black)),
-      ),
+      width: 500,
+      margin: EdgeInsets.all(24.0),
+      child: ElevatedButton.icon(
+          onPressed: () => onTap,
+          icon: icon,
+          label: Text(
+            text,
+            style: TextStyle(fontSize: 32.0),
+          ),
+          style: ElevatedButton.styleFrom(
+              primary: color, onPrimary: Colors.black)),
     );
   }
 }
