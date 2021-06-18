@@ -13,8 +13,9 @@ class Flashcard extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
+        Expanded(flex: 1, child: _countIndicator(wordData.count.toString())),
         Expanded(
-          flex: 2,
+          flex: 5,
           child: Center(
             child: FlipCard(
               key: flipKey,
@@ -24,12 +25,12 @@ class Flashcard extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 1,
+          flex: 2,
           child: _buttonWidget('remembred', Colors.green, () {},
               Icon(Icons.check_circle_outline)),
         ),
         Expanded(
-            flex: 1,
+            flex: 2,
             child: _buttonWidget(
                 'retry', Colors.red, () {}, Icon(Icons.replay_outlined)))
       ],
@@ -40,10 +41,10 @@ class Flashcard extends StatelessWidget {
     return Container(
       width: 600,
       height: 300,
+      //color: Colors.grey[100],
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(20)),
+          border: Border.all(), borderRadius: BorderRadius.circular(20)),
       margin: EdgeInsets.fromLTRB(0, 20.0, 0, 20.0),
       child: GestureDetector(
         child: Text(
@@ -68,6 +69,17 @@ class Flashcard extends StatelessWidget {
           ),
           style: ElevatedButton.styleFrom(
               primary: color, onPrimary: Colors.black)),
+    );
+  }
+
+  Widget _countIndicator(String text) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(0, 0, 30.0, 0.0),
+      alignment: Alignment.centerRight,
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 30.0),
+      ),
     );
   }
 }
