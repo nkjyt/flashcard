@@ -10,30 +10,12 @@ class Flashcard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(flex: 1, child: _countIndicator(wordData.count.toString())),
-        Expanded(
-          flex: 5,
-          child: Center(
-            child: FlipCard(
-              key: flipKey,
-              front: _wordCard(wordData.word),
-              back: _wordCard(wordData.jpn),
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: _buttonWidget('remembred', Colors.green, () {},
-              Icon(Icons.check_circle_outline)),
-        ),
-        Expanded(
-            flex: 2,
-            child: _buttonWidget(
-                'retry', Colors.red, () {}, Icon(Icons.replay_outlined)))
-      ],
+    return Center(
+      child: FlipCard(
+        key: flipKey,
+        front: _wordCard(wordData.word),
+        back: _wordCard(wordData.jpn),
+      ),
     );
   }
 

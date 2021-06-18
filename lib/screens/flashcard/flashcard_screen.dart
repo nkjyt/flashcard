@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'flashcard.dart';
 import 'flashcard_state_notifier.dart';
 import 'flashcard_repository.dart';
+import 'package:flashcard/widgets/button.dart';
 
 final studyStateProvider = StateNotifierProvider((ref) => StudyState(false));
 final indexStateProvider = StateNotifierProvider((ref) => IndexState(0));
@@ -35,7 +36,7 @@ class FlashcardScreen extends HookWidget {
         ),
         body: isStudying
             ? Container(
-                child: _List(),
+                child: FlashcardPage(),
                 alignment: Alignment.bottomCenter,
               )
             : ElevatedButton(
@@ -44,19 +45,55 @@ class FlashcardScreen extends HookWidget {
   }
 }
 
-class _List extends HookWidget {
+class FlashcardPage extends HookWidget {
   final flashcardProvider = StateNotifierProvider(
       (_) => FlashcardStateNotifier(FlashcardRepository()));
   final index = useProvider(indexStateProvider.state);
+
   @override
   Widget build(BuildContext context) {
+    final flashcardNotifier = useProvider(flashcardProvider);
     final state = useProvider(flashcardProvider.state);
-    return Container(
-        alignment: Alignment.bottomCenter, child: Flashcard(state.flashcards[index])
-        /* ListView.builder(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Expanded(
+            flex: 1,
+            child: _countIndicator(state.flashcards[index].count.toString())),
+        Expanded(
+          flex: 5,
+          child: Flashcard(state.flashcards[index]),
+        ),
+        Expanded(
+          flex: 2,
+          child: buttonFlashcard(
+              'remembred',
+              Colors.green,
+              () => flashcardNotifier.onTapRemembered(index),
+              Icon(Icons.check_circle_outline)),
+        ),
+        Expanded(
+            flex: 2,
+            child: buttonFlashcard(
+                'retry', Colors.red, () {}, Icon(Icons.replay_outlined))),
+      ],
+    );
+    /* Container(
+        alignment: Alignment.bottomCenter, child: Flashcard(state.flashcards[index]) */
+    /* ListView.builder(
         itemCount: state.flashcards.length,
           itemBuilder: (context, int index) =>
               Flashcard(state.flashcards[index])); */
-        );
+  }
+
+  Widget _countIndicator(String text) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(0, 0, 30.0, 0.0),
+      alignment: Alignment.centerRight,
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 30.0),
+      ),
+    );
   }
 }
