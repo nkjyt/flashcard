@@ -9,7 +9,6 @@ class FlashcardRepository {
   Future<List<WordData>> getFlashcards() async {
     List<WordData> data = [];
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-
     await firestore.collection('words').doc('all_word').get().then((snapshot) {
       if (!snapshot.exists)
         print('data is not exist');
@@ -20,7 +19,7 @@ class FlashcardRepository {
         });
       }
     });
-    await print(data);
+    //await print(data);
     return data;
   }
 }

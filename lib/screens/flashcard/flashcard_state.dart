@@ -9,7 +9,7 @@ part 'flashcard_state.g.dart';
 
 @freezed
 abstract class FlashcardState with _$FlashcardState {
-  const factory FlashcardState({@Default([]) List<WordData> flashcards}) =
+  const factory FlashcardState({WordData flashcard}) =
       _FlashcardState;
   factory FlashcardState.fromJson(Map<String, dynamic> json) =>
       _$FlashcardStateFromJson(json);

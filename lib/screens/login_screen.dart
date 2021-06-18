@@ -1,6 +1,6 @@
 import 'package:flashcard/screens/flashcard/flashcard_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -27,9 +27,7 @@ class LoginScreen extends State<Login> {
   final auth_error = Authentication_error();
 
   @override
-  void initState() {
-    
-  }
+  void initState() {}
 
   @override
   Widget build(BuildContext context) {
@@ -91,16 +89,21 @@ class LoginScreen extends State<Login> {
                         email: login_Email,
                         password: login_Password,
                       );
-
+                      
                       // ログイン成功
                       // ログインユーザーのIDを取得
                       user = result.user;
+
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setString('uid', user.uid);
+                      
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  FlashcardScreen(user_id: user.uid),
-                              ));
+                            builder: (context) =>
+                                FlashcardScreen(user_id: user.uid),
+                          ));
                     } catch (e) {
                       // ログインに失敗した場合
                       setState(() {
@@ -136,10 +139,9 @@ class LoginScreen extends State<Login> {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                        fullscreenDialog: true,
-                        builder: (BuildContext context) =>
-                            Registration(),
-                        ),
+                      fullscreenDialog: true,
+                      builder: (BuildContext context) => Registration(),
+                    ),
                   );
                 }),
           ),

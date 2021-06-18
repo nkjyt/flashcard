@@ -1,5 +1,8 @@
+import 'package:flashcard/data/word_data.dart';
+
 import 'flashcard_repository.dart';
 import 'package:state_notifier/state_notifier.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'flashcard_state.dart';
 
@@ -11,21 +14,37 @@ class FlashcardStateNotifier extends StateNotifier<FlashcardState>
   }
 
   final FlashcardRepository repository;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  List<WordData> flashcards = [];
+  int index = 0;
 
   Future<void> _getFlashcards() async {
-    var flashcards = await repository.getFlashcards();
-    state = state.copyWith(flashcards: flashcards);
+    flashcards = await repository.getFlashcards();
+    state = state.copyWith(flashcard: flashcards[index]);
   }
 
-  Future<void> onTapRemembered(int index) async {
-    var flashcards = state.flashcards;
-    await print(flashcards[index]);
-    flashcards[index] = flashcards[index].copyWith(count : flashcards[index].count + 1);
-    await print(flashcards[index]);
+  Future<void> onTapRemembered() async {
+    var flashcard = state.flashcard;
+    await print(flashcard);
+    flashcard = flashcard.copyWith(count: flashcard.count + 1);
+    flashcard = flashcard.copyWith(isRemembered: true);
 
-    state = state.copyWith(flashcards: flashcards);
-    await print(state.flashcards[index].count);
+    await print(flashcard);
+
+    index++;
+    state = state.copyWith(flashcard: flashcards[index]);
   }
 
-  Future<void> onTapRetry() async {}
+  Future<void> onTapRetry() async {
+    var flashcard = state.flashcard;
+    await print(flashcard);
+    flashcard = flashcard.copyWith(count: flashcard.count + 1);
+    //flashcard = flashcard.copyWith(isRemembered : true);
+
+    await print(flashcard);
+
+    index++;
+    state = state.copyWith(flashcard: flashcards[index]);
+  }
 }

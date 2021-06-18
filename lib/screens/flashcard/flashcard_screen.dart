@@ -58,24 +58,22 @@ class FlashcardPage extends HookWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Expanded(
-            flex: 1,
-            child: _countIndicator(state.flashcards[index].count.toString())),
+            flex: 1, child: _countIndicator(state.flashcard.count.toString())),
         Expanded(
           flex: 5,
-          child: Flashcard(state.flashcards[index]),
+          child: Flashcard(state.flashcard),
         ),
         Expanded(
           flex: 2,
-          child: buttonFlashcard(
-              'remembred',
-              Colors.green,
-              () => flashcardNotifier.onTapRemembered(index),
-              Icon(Icons.check_circle_outline)),
+          child: buttonFlashcard('remembred', Colors.green, () async {
+            await flashcardNotifier.onTapRemembered();
+          }, Icon(Icons.check_circle_outline)),
         ),
         Expanded(
             flex: 2,
-            child: buttonFlashcard(
-                'retry', Colors.red, () {}, Icon(Icons.replay_outlined))),
+            child: buttonFlashcard('retry', Colors.red, () async {
+              await flashcardNotifier.onTapRetry();
+            }, Icon(Icons.replay_outlined))),
       ],
     );
     /* Container(

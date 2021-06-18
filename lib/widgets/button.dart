@@ -12,15 +12,11 @@ class buttonFlashcard extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Container(
       width: 500,
       margin: EdgeInsets.all(24.0),
       child: ElevatedButton.icon(
-          onPressed: () {
-            onTap();
-          },
+          onPressed: () => onTap(),
           icon: icon,
           label: Text(
             text,

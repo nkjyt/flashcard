@@ -2,6 +2,7 @@ import 'package:flashcard/screens/flashcard/flashcard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flashcard/utils/authentication_error.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // アカウント登録ページ
 class Registration extends StatefulWidget {
@@ -98,6 +99,10 @@ class _RegistrationState extends State<Registration> {
                       // 登録成功
                       // 登録したユーザー情報
                       user = result.user;
+
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setString('uid', user.uid);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
