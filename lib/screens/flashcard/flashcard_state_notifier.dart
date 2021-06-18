@@ -18,7 +18,7 @@ class FlashcardStateNotifier extends StateNotifier<FlashcardState> with LocatorM
   }
 
   Future<void> onTapRemembered() async {
-
+    
   }
 
   Future<void> onTapRetry() async {
