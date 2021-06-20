@@ -30,14 +30,20 @@ class FlashcardRepository {
             data.add(WordData.fromJson(value));
           });
 
-          await firestore.collection(Strings.exprimentName).doc(uid).set(word_data);
+          await firestore
+              .collection(Strings.exprimentName)
+              .doc(uid)
+              .set(word_data);
         });
-        
       } else {
+        //userのドキュメントから取得する
         Map<String, dynamic> word_data = snapshot.data();
         word_data.forEach((key, value) {
-          data.add(WordData.fromJson(value));
+          word_data[key]['isRemembered']
+              ? null
+              : data.add(WordData.fromJson(value));
         });
+        await print(data);
       }
     });
     //await print(data);

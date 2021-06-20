@@ -31,6 +31,7 @@ class FlashcardStateNotifier extends StateNotifier<FlashcardState>
     userDoc = await firestore.collection(Strings.exprimentName).doc(uid);
   }
 
+  //remembered　押したとき
   Future<void> onTapRemembered() async {
     var flashcard = state.flashcard;
     await print(flashcard);
@@ -45,6 +46,7 @@ class FlashcardStateNotifier extends StateNotifier<FlashcardState>
 
   }
 
+  //retry　押したとき
   Future<void> onTapRetry() async {
     var flashcard = state.flashcard;
     await print(flashcard);
