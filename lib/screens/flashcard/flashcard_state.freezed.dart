@@ -17,9 +17,9 @@ class _$FlashcardStateTearOff {
   const _$FlashcardStateTearOff();
 
 // ignore: unused_element
-  _FlashcardState call({List<WordData> flashcards = const []}) {
+  _FlashcardState call({WordData flashcard}) {
     return _FlashcardState(
-      flashcards: flashcards,
+      flashcard: flashcard,
     );
   }
 
@@ -35,7 +35,7 @@ const $FlashcardState = _$FlashcardStateTearOff();
 
 /// @nodoc
 mixin _$FlashcardState {
-  List<WordData> get flashcards;
+  WordData get flashcard;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -47,7 +47,9 @@ abstract class $FlashcardStateCopyWith<$Res> {
   factory $FlashcardStateCopyWith(
           FlashcardState value, $Res Function(FlashcardState) then) =
       _$FlashcardStateCopyWithImpl<$Res>;
-  $Res call({List<WordData> flashcards});
+  $Res call({WordData flashcard});
+
+  $WordDataCopyWith<$Res> get flashcard;
 }
 
 /// @nodoc
@@ -61,13 +63,22 @@ class _$FlashcardStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object flashcards = freezed,
+    Object flashcard = freezed,
   }) {
     return _then(_value.copyWith(
-      flashcards: flashcards == freezed
-          ? _value.flashcards
-          : flashcards as List<WordData>,
+      flashcard:
+          flashcard == freezed ? _value.flashcard : flashcard as WordData,
     ));
+  }
+
+  @override
+  $WordDataCopyWith<$Res> get flashcard {
+    if (_value.flashcard == null) {
+      return null;
+    }
+    return $WordDataCopyWith<$Res>(_value.flashcard, (value) {
+      return _then(_value.copyWith(flashcard: value));
+    });
   }
 }
 
@@ -78,7 +89,10 @@ abstract class _$FlashcardStateCopyWith<$Res>
           _FlashcardState value, $Res Function(_FlashcardState) then) =
       __$FlashcardStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<WordData> flashcards});
+  $Res call({WordData flashcard});
+
+  @override
+  $WordDataCopyWith<$Res> get flashcard;
 }
 
 /// @nodoc
@@ -94,12 +108,11 @@ class __$FlashcardStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object flashcards = freezed,
+    Object flashcard = freezed,
   }) {
     return _then(_FlashcardState(
-      flashcards: flashcards == freezed
-          ? _value.flashcards
-          : flashcards as List<WordData>,
+      flashcard:
+          flashcard == freezed ? _value.flashcard : flashcard as WordData,
     ));
   }
 }
@@ -110,19 +123,17 @@ class __$FlashcardStateCopyWithImpl<$Res>
 class _$_FlashcardState
     with DiagnosticableTreeMixin
     implements _FlashcardState {
-  const _$_FlashcardState({this.flashcards = const []})
-      : assert(flashcards != null);
+  const _$_FlashcardState({this.flashcard});
 
   factory _$_FlashcardState.fromJson(Map<String, dynamic> json) =>
       _$_$_FlashcardStateFromJson(json);
 
-  @JsonKey(defaultValue: const [])
   @override
-  final List<WordData> flashcards;
+  final WordData flashcard;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FlashcardState(flashcards: $flashcards)';
+    return 'FlashcardState(flashcard: $flashcard)';
   }
 
   @override
@@ -130,21 +141,21 @@ class _$_FlashcardState
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'FlashcardState'))
-      ..add(DiagnosticsProperty('flashcards', flashcards));
+      ..add(DiagnosticsProperty('flashcard', flashcard));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _FlashcardState &&
-            (identical(other.flashcards, flashcards) ||
+            (identical(other.flashcard, flashcard) ||
                 const DeepCollectionEquality()
-                    .equals(other.flashcards, flashcards)));
+                    .equals(other.flashcard, flashcard)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(flashcards);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(flashcard);
 
   @JsonKey(ignore: true)
   @override
@@ -158,14 +169,13 @@ class _$_FlashcardState
 }
 
 abstract class _FlashcardState implements FlashcardState {
-  const factory _FlashcardState({List<WordData> flashcards}) =
-      _$_FlashcardState;
+  const factory _FlashcardState({WordData flashcard}) = _$_FlashcardState;
 
   factory _FlashcardState.fromJson(Map<String, dynamic> json) =
       _$_FlashcardState.fromJson;
 
   @override
-  List<WordData> get flashcards;
+  WordData get flashcard;
   @override
   @JsonKey(ignore: true)
   _$FlashcardStateCopyWith<_FlashcardState> get copyWith;

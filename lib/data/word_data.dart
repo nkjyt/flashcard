@@ -10,7 +10,7 @@ abstract class WordData with _$WordData {
     String word,
     String jpn,
     int count,
-    int isRemembered,
+    bool isRemembered,
   }) = _WordData;
 
   factory WordData.fromJson(Map<String, dynamic> json) =>

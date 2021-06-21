@@ -8,15 +8,13 @@ part of 'flashcard_state.dart';
 
 _$_FlashcardState _$_$_FlashcardStateFromJson(Map<String, dynamic> json) {
   return _$_FlashcardState(
-    flashcards: (json['flashcards'] as List)
-            ?.map((e) =>
-                e == null ? null : WordData.fromJson(e as Map<String, dynamic>))
-            ?.toList() ??
-        [],
+    flashcard: json['flashcard'] == null
+        ? null
+        : WordData.fromJson(json['flashcard'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$_$_FlashcardStateToJson(_$_FlashcardState instance) =>
     <String, dynamic>{
-      'flashcards': instance.flashcards,
+      'flashcard': instance.flashcard,
     };
